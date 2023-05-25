@@ -4,10 +4,9 @@ kind: Service
 metadata:
   name: bind-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: bind
-  clusterIP: 10.2.0.105
   ports:
     # By default and for convenience, the `targetPort`
     # is set to the same value as the `port` field.
@@ -21,7 +20,3 @@ spec:
       nodePort: 30053
       protocol: TCP
       name: dns-tcp
-status:
-  loadBalancer:
-    ingress:
-    - ip: 10.2.0.103
