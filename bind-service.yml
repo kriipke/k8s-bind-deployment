@@ -7,6 +7,7 @@ spec:
   type: LoadBalancer
   selector:
     app: bind
+  clusterIP: 10.2.0.105
   ports:
     # By default and for convenience, the `targetPort`
     # is set to the same value as the `port` field.
@@ -15,10 +16,8 @@ spec:
       nodePort: 30053
       protocol: UDP
       name: dns-udp
-      loadBalancerIP: 10.2.0.105
     - port: 53
       targetPort: 53
       nodePort: 30053
       protocol: TCP
       name: dns-tcp
-      loadBalancerIP: 10.2.0.105
