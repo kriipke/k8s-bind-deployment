@@ -21,3 +21,7 @@ spec:
       nodePort: 30053
       protocol: TCP
       name: dns-tcp
+status:
+  loadBalancer:
+    ingress:
+    - ip: 10.2.0.103
