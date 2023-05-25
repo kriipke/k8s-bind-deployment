@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bind-deployment
+  labels:
+    app: bind
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bind
+  template:
+    metadata:
+      labels:
+        app: bind
+    spec:
+      containers:
+      - name: bind
+        image: cytopia/bind:latest
+        ports:
+        - protocol: TCP
+          containerPort: 53
+        - protocol: UDP
+          containerPort: 53
+        env:
+        - name: DOCKER_LOGS
+          value: '1'
+        - name: ALLOW_QUERY
+          value: any
+        - name: DNS_FORWARDER
+          value: 1.1.1.1,1.0.0.1
+        - name: DNS_PTR
+          value: 10.2.0.12=ovirt.ziinc.us, 10.2.0.20=kvm2.ziinc.us
+        - name: DNS_A
+          value: ovirt.ziinc.us=10.2.0.12, kvm2.ziinc.us=10.2.0.20

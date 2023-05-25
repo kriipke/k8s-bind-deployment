@@ -1,0 +1,1 @@
+https://medium.com/swlh/serving-bind-dns-in-kubernetes-8639fce37448
