@@ -1,1 +1,13 @@
+= Kubernetes Bind DNS Server Deployment
+
+== Reference
+
 https://medium.com/swlh/serving-bind-dns-in-kubernetes-8639fce37448
+
+== Architecture
+
+image:k8s-dns.png[]
+
+== Notes
+
+link:https://metallb.universe.tf[MetalLB] was used in this deployment
