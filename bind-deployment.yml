@@ -2,11 +2,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bind-deployment
-  labels:
-    app: bind
+  name: bind-server
+  namespace: bind
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: bind
@@ -19,13 +17,12 @@ spec:
       - name: bind
         image: cytopia/bind:latest
         ports:
-        - protocol: TCP
-          containerPort: 53
-        - protocol: UDP
-          containerPort: 53
+        - containerPort: 53
         env:
         - name: DOCKER_LOGS
           value: '1'
+        - name: DNSSEC_VALIDATE
+          value: auto
         - name: ALLOW_QUERY
           value: any
         - name: DNS_FORWARDER
