@@ -1,22 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dns-service-tcp
+  namespace: bind
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "key-to-share-10.2.0.104"
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.2.0.104
+  ports:
+    - name: dnstcp
+      protocol: TCP
+      port: 53
+      targetPort: 53
+  selector:
+    app: dns
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: bind-service
+  name: dns-service-udp
+  namespace: bind
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "key-to-share-10.2.0.104"
 spec:
-  type: NodePort
-  selector:
-    app: bind
+  type: LoadBalancer
+  loadBalancerIP: 10.2.0.104
   ports:
-    # By default and for convenience, the `targetPort`
-    # is set to the same value as the `port` field.
-    - port: 53
-      targetPort: 53
-      nodePort: 53
+    - name: dnsudp
       protocol: UDP
-      name: dns-udp
-    - port: 53
+      port: 53
       targetPort: 53
-      nodePort: 53
-      protocol: TCP
-      name: dns-tcp
+  selector:
+    app: dns
