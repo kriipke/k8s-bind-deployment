@@ -28,6 +28,6 @@ spec:
         - name: DNS_FORWARDER
           value: 1.1.1.1,1.0.0.1
         - name: DNS_PTR
-          value: 10.2.0.12=ovirt.ziinc.us, 10.2.0.20=kvm2.ziinc.us, 10.2.0.105=ns.ziinc.us, 10.2.0.106=ide.ziinc.us
+          value: 10.2.0.12=ovirt.ziinc.us, 10.2.0.20=kvm2.ziinc.us, 10.2.0.105=ns.ziinc.us, 10.2.0.106=ide.ziinc.us, 10.2.0.14=ove.ziinc.us
         - name: DNS_A
-          value: ovirt.ziinc.us=10.2.0.12, kvm2.ziinc.us=10.2.0.20, ide.ziinc.us=10.2.0.106, ns.ziinc.us=10.2.0.105
+          value: ovirt.ziinc.us=10.2.0.12, kvm2.ziinc.us=10.2.0.20, ide.ziinc.us=10.2.0.106, ns.ziinc.us=10.2.0.105, ove.ziinc.us=10.2.0.14
